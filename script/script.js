@@ -1,24 +1,29 @@
      document.addEventListener('DOMContentLoaded', function () {
     let display = document.querySelector('.display');
-    let clearButton = document.querySelector('#calc input[value="c"]');
-    let calcButtons = document.querySelectorAll('#calc input[type="button"]');
+    let clearBtn = document.querySelector('#calc input[value="c"]');
+    let calcBtn = document.querySelectorAll('#calc input[type="button"]');
     
     
-    calcButtons.forEach(button => {
+    calcBtn.forEach(button => {
         button.addEventListener('click', function () {
             let value = this.value;
 
             if (value === '=') {
-                calculate();
+                result();
             } else if (value === 'c') {
-                clearDisplay();
+                clear();
             } else {
                 display.textContent += value;
             }
         });
     });
+    
+            function clear() {
+                display.textContent = '';
+            }
+            
 
-    function calculate() {
+    function result() {
         try {
             let result = eval(display.textContent);
             display.textContent = result;
